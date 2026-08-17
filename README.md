@@ -49,8 +49,80 @@ Display all edge-detected images for comparison.
 
 ## Developed By
 
-- **Name:** ____________________________  
-- **Register No:** ______________________  
+- **Name:** R VENKATRAMANI 
+- **Register No:** 212225240182
+
+```python
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+image = cv2.imread('wolf.jpg')  # Replace with your image path
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+# Original Image
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+plt.title('Original Image')
+plt.axis('off')
+```
+```python
+sobel_x = cv2.Sobel(gray_image, cv2.CV_64F, 1, 0, ksize=5)  # Sobel in x direction
+sobel_y = cv2.Sobel(gray_image, cv2.CV_64F, 0, 1, ksize=5)  # Sobel in y direction
+sobel_combined = cv2.magnitude(sobel_x, sobel_y)  # Combine both directions
+plt.imshow(sobel_combined, cmap='gray')
+plt.title('Sobel Edge Detection')
+plt.axis('off')
+```
+```python
+laplacian = cv2.Laplacian(gray_image, cv2.CV_64F)
+plt.imshow(laplacian, cmap='gray')
+plt.title('Laplacian Edge Detection')
+plt.axis('off')
+```
+```python
+
+canny_edges = cv2.Canny(gray_image, 50, 150)
+plt.imshow(canny_edges, cmap='gray')
+plt.title('Canny Edge Detection')
+plt.axis('off')
+```
+```python
+image = cv2.imread("wolf.jpg")
+
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+prewitt_x = np.array([[1, 0, -1],
+                      [1, 0, -1],
+                      [1, 0, -1]])
+
+prewitt_y = np.array([[1, 1, 1],
+                      [0, 0, 0],
+                      [-1, -1, -1]])
+
+prewitt_x_edge = cv2.filter2D(gray, -1, prewitt_x)
+prewitt_y_edge = cv2.filter2D(gray, -1, prewitt_y)
+prewitt = cv2.magnitude(prewitt_x_edge.astype(np.float32),
+                        prewitt_y_edge.astype(np.float32))
+
+plt.imshow(canny_edges, cmap='gray')
+plt.title('Prewitt Edge Detection')
+plt.axis('off')
+```
+```python
+roberts_x = np.array([[1, 0],
+                      [0, -1]])
+
+roberts_y = np.array([[0, 1],
+                      [-1, 0]])
+
+roberts_x_edge = cv2.filter2D(gray, -1, roberts_x)
+roberts_y_edge = cv2.filter2D(gray, -1, roberts_y)
+roberts = cv2.magnitude(roberts_x_edge.astype(np.float32),
+                        roberts_y_edge.astype(np.float32))
+plt.imshow(canny_edges, cmap='gray')
+plt.title('Roberts Edge Detection')
+plt.axis('off')  
+
+```
+
 
 ---
 
