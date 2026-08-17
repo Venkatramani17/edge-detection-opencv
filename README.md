@@ -132,7 +132,7 @@ plt.axis('off')
 ###  Sobel Edge Detector
 - Detects edges in horizontal and vertical directions  
 - Produces gradient-based edge map
-  <img width="693" height="510" alt="image" src="https://github.com/user-attachments/assets/e02efea6-9471-488b-923a-f0816f3a3447" />
+<img width="693" height="510" alt="image" src="https://github.com/user-attachments/assets/e02efea6-9471-488b-923a-f0816f3a3447" />
 
 
 ###  Prewitt Edge Detector
